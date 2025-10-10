@@ -77,7 +77,7 @@ fun Profile(modifier: Modifier = Modifier) {
             painter = painterResource(id = R.drawable.ellipse1),
             contentDescription = "Ellipse 1",
             modifier = Modifier
-                .align(Alignment.TopCenter)
+                .align(Alignment.TopStart)
                 .offset(y = 223.dp)
                 .requiredSize(150.dp)
                 .clip(CircleShape)
