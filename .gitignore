@@ -1,0 +1,38 @@
+# Gradle files
+.gradle/
+build/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Log/OS files
+*.log
+*.swp
+.DS_Store
+
+# Android Studio
+.idea/
+.cxx/
+*.iml
+.externalNativeBuild/
+
+# Keystore files
+*.jks
+
+# APK/Generated files
+*.apk
+*.ap_
+*.dex
+*.class
+
+# Crashlytics/Analytics
+fabric.properties
+
+# Kotlin specific
+*.kotlin_module
+
+# Jetpack Compose
+*.pb
+
+# Others
+.vscode/
