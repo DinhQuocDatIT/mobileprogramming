@@ -32,7 +32,7 @@ fun Header(nameHeader:String,navController: NavController){
             contentDescription = "Quayve",
             tint = Color(0xFF03A9F4),
             modifier = Modifier.size(25.dp).weight(1f).clickable{
-                navController.navigate("home")
+                navController.popBackStack()
             })
 
         Text((nameHeader) , fontWeight = FontWeight.Bold, fontSize = 20.sp, color = Color(0xFF03A9F4))

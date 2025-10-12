@@ -37,7 +37,7 @@ fun ComponentList(
         Header("UI Component List",navController = navController)
         Column (verticalArrangement = Arrangement.spacedBy(10.dp)){
             Text("Display", fontSize = 18.sp, fontWeight = FontWeight.Bold)
-            cardCustom("Text","Displays text","home",backgroundCard,navController = navController)
+            cardCustom("Text","Displays text","textdetail",backgroundCard,navController = navController)
             cardCustom("Image","Displays an image","home",backgroundCard,navController = navController)
         }
         Column (verticalArrangement = Arrangement.spacedBy(10.dp)){
