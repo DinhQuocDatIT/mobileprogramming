@@ -42,7 +42,7 @@ fun ComponentList(
         }
         Column (verticalArrangement = Arrangement.spacedBy(10.dp)){
             Text("Input", fontSize = 18.sp, fontWeight = FontWeight.Bold)
-            cardCustom("TextField","Input field for text","home",backgroundCard,navController = navController)
+            cardCustom("TextField","Input field for text","textfield",backgroundCard,navController = navController)
             cardCustom("PasswordField","Input field for passwords","home",backgroundCard,navController = navController)
         }
         Column (verticalArrangement = Arrangement.spacedBy(10.dp)){

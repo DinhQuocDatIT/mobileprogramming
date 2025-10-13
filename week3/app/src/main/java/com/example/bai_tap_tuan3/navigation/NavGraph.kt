@@ -11,6 +11,7 @@ import com.example.bai_tap_tuan3.pages.ComponentList
 import com.example.bai_tap_tuan3.pages.Images
 import com.example.bai_tap_tuan3.pages.RowLayout
 import com.example.bai_tap_tuan3.pages.TextDetail
+import com.example.bai_tap_tuan3.pages.TextField
 import com.example.bai_tap_tuan3.ui.screens.HomeScreen
 
 @Composable
@@ -29,6 +30,9 @@ fun NavGraph(modifier: Modifier = Modifier) {
         }
         composable ("images"){
             Images(navController = navController)
+        }
+        composable("textfield") {
+            TextField(navController =navController)
         }
         composable("rowlayout") {
             RowLayout(navController = navController)
