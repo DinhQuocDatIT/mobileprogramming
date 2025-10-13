@@ -38,7 +38,7 @@ fun ComponentList(
         Column (verticalArrangement = Arrangement.spacedBy(10.dp)){
             Text("Display", fontSize = 18.sp, fontWeight = FontWeight.Bold)
             cardCustom("Text","Displays text","textdetail",backgroundCard,navController = navController)
-            cardCustom("Image","Displays an image","home",backgroundCard,navController = navController)
+            cardCustom("Image","Displays an image","images",backgroundCard,navController = navController)
         }
         Column (verticalArrangement = Arrangement.spacedBy(10.dp)){
             Text("Input", fontSize = 18.sp, fontWeight = FontWeight.Bold)

@@ -1,11 +1,13 @@
 package com.example.bai_tap_tuan3.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
 
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.bai_tap_tuan3.pages.ComponentList
+import com.example.bai_tap_tuan3.pages.Images
 import com.example.bai_tap_tuan3.pages.TextDetail
 import com.example.bai_tap_tuan3.ui.screens.HomeScreen
 
@@ -23,5 +25,9 @@ fun NavGraph(modifier: Modifier = Modifier) {
         composable("textdetail"){
             TextDetail(navController = navController)
         }
+        composable ("images"){
+            Images(navController = navController)
+        }
+
     }
 }
