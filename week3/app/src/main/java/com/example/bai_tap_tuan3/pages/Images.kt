@@ -37,7 +37,6 @@ fun Images(navController: NavController){
     Column(
         modifier = Modifier.fillMaxSize().padding(top=20.dp, start = 20.dp, end = 20.dp, bottom = 20.dp),
         horizontalAlignment = Alignment.Start,
-        verticalArrangement = Arrangement.spacedBy(20.dp)
     ){
         Header("Images",navController = navController)
         Column(

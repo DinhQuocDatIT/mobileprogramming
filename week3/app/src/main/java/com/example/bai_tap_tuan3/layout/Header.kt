@@ -25,7 +25,7 @@ import androidx.navigation.NavController
 @Composable
 fun Header(nameHeader:String,navController: NavController){
     Row(
-        modifier = Modifier.fillMaxWidth().padding(20.dp,10.dp),
+        modifier = Modifier.fillMaxWidth().padding(top=20.dp, bottom = 10.dp),
         horizontalArrangement = Arrangement.Center
     ) {
         Icon(imageVector = Icons.Outlined.KeyboardArrowLeft,

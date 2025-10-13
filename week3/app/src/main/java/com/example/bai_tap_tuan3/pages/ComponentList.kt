@@ -47,8 +47,8 @@ fun ComponentList(
         }
         Column (verticalArrangement = Arrangement.spacedBy(10.dp)){
             Text("Layout", fontSize = 18.sp, fontWeight = FontWeight.Bold)
-            cardCustom("Column","Arranges elements vertically","home",backgroundCard,navController = navController)
-            cardCustom("Row","Arranges elements horizontally","home",backgroundCard,navController = navController)
+            cardCustom("Column","Arranges elements vertically","columnlayout",backgroundCard,navController = navController)
+            cardCustom("Row","Arranges elements horizontally","rowlayout",backgroundCard,navController = navController)
         }
 
 
