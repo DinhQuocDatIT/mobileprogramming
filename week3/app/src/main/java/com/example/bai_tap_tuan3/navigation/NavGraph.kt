@@ -8,7 +8,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.bai_tap_tuan3.pages.ColumnLayout
 import com.example.bai_tap_tuan3.pages.ComponentList
+import com.example.bai_tap_tuan3.pages.Detail
+import com.example.bai_tap_tuan3.pages.DropdownText
 import com.example.bai_tap_tuan3.pages.Images
+import com.example.bai_tap_tuan3.pages.Layzycolumn
 import com.example.bai_tap_tuan3.pages.RowLayout
 import com.example.bai_tap_tuan3.pages.TextDetail
 import com.example.bai_tap_tuan3.pages.TextField
@@ -39,6 +42,15 @@ fun NavGraph(modifier: Modifier = Modifier) {
         }
         composable("columnlayout") {
             ColumnLayout(navController = navController)
+        }
+        composable("dropdowntext") {
+            DropdownText(navController = navController)
+        }
+        composable("lazycolumn") {
+            Layzycolumn(navController =navController)
+        }
+        composable("detail") {
+            Detail(navController = navController)
         }
     }
 }

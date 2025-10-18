@@ -49,6 +49,8 @@ fun ComponentList(
             Text("Layout", fontSize = 18.sp, fontWeight = FontWeight.Bold)
             cardCustom("Column","Arranges elements vertically","columnlayout",backgroundCard,navController = navController)
             cardCustom("Row","Arranges elements horizontally","rowlayout",backgroundCard,navController = navController)
+            cardCustom("Dropdown Text","Arranges elements horizontally","dropdowntext",backgroundCard,navController = navController)
+            cardCustom("Lazycolumn","Lazycolumn","lazycolumn",backgroundCard,navController = navController)
         }
 
 
