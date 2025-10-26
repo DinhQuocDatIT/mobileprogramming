@@ -5,4 +5,5 @@ object Screen{
     const val ListBooks = "listbooks"
     const val Student ="student"
     const val CreateBook="createbook"
+    const val AddBook = "student/{id}"
 }

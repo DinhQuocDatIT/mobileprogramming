@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.bai_tap_tuan_4"
+    namespace = "com.example.uthsmarttasks"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.bai_tap_tuan_4"
+        applicationId = "com.example.uthsmarttasks"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -40,8 +40,7 @@ android {
 }
 
 dependencies {
-    implementation("br.com.devsrsouza.compose.icons:font-awesome:1.1.0")
-    implementation("androidx.navigation:navigation-compose:2.8.0")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

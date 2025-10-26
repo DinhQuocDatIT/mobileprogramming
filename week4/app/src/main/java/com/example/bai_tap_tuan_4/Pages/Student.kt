@@ -44,9 +44,10 @@ import com.example.bai_tap_tuan_4.Entity.Book
 import com.example.bai_tap_tuan_4.Entity.ReferenceBook
 import com.example.bai_tap_tuan_4.Entity.RomanceBook
 import com.example.bai_tap_tuan_4.Entity.Student
+import com.example.bai_tap_tuan_4.ViewModule.StudentViewModule
 
 @Composable
-fun Student(navController: NavController){
+fun Student(viewModel : StudentViewModule,navController: NavController){
     var listStudent = remember { mutableStateListOf<Student>() }
     var id by remember { mutableStateOf("") }
     var nameStudent by remember { mutableStateOf("") }
@@ -89,7 +90,7 @@ fun Student(navController: NavController){
                     messageCreate="Vui lòng nhập đầy đủ thông tin"
                 }
                 else{
-                    listStudent.add(Student(_id,nameStudent))
+                    viewModel.addStudent(Student(_id,nameStudent))
                     messageCreate="Thêm thành công"
                     id=""
                     nameStudent=""
@@ -115,7 +116,7 @@ fun Student(navController: NavController){
             verticalArrangement = Arrangement.spacedBy(10.dp)){
 
 
-            items(listStudent){
+            items(viewModel.studentList){
                     student -> Row(modifier = Modifier.fillMaxWidth().shadow(8.dp).clip(shape = RoundedCornerShape(10.dp)).background(color = Color.White).padding(end = 10.dp, start = 10.dp),
                 verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.SpaceBetween){

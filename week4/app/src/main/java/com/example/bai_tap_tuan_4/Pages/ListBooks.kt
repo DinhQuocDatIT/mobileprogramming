@@ -5,15 +5,16 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
@@ -36,160 +37,164 @@ import androidx.navigation.NavController
 import com.example.bai_tap_tuan_4.Entity.Book
 import com.example.bai_tap_tuan_4.Entity.ReferenceBook
 import com.example.bai_tap_tuan_4.Entity.RomanceBook
+import com.example.bai_tap_tuan_4.ViewModule.BookViewModel
 
-object Categorys{
-    const val romance ="Ngôn tình"
-    const val reference ="Tham khảo"
+object Categorys {
+    const val romance = "Ngôn tình"
+    const val reference = "Tham khảo"
 }
+
 @Composable
-fun ListBooks(navController: NavController){
-    val listBook = remember { mutableStateListOf<Book>() }
+fun ListBooks(viewModel: BookViewModel, navController: NavController) {
     var id by remember { mutableStateOf("") }
     var nameBook by remember { mutableStateOf("") }
     var messageCreate by remember { mutableStateOf("") }
     var expanded by remember { mutableStateOf(false) }
-    var category by remember {mutableStateOf("")}
+    var category by remember { mutableStateOf("") }
 
-
-    Column(modifier = Modifier.fillMaxSize().background(color = Color.White),
-        horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(text = "Quản lý sách", fontSize = 30.sp, fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(top=80.dp, bottom = 20.dp))
-        Column(modifier = Modifier.fillMaxWidth().padding(30.dp,10.dp).clip(shape = RoundedCornerShape(10.dp)).background(color = Color(
-            0xFFFFFFFF
+    Column(
+        modifier = Modifier.fillMaxSize().background(Color.White),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = "Quản lý sách",
+            fontSize = 30.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(top = 80.dp, bottom = 20.dp)
         )
-        ).padding(30.dp),
+
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(30.dp, 10.dp)
+                .clip(RoundedCornerShape(10.dp))
+                .background(Color.White)
+                .padding(30.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            verticalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
             OutlinedTextField(
                 value = id,
                 onValueChange = { id = it },
-                placeholder = {Text("Nhập mã sách")},
+                placeholder = { Text("Nhập mã sách") },
                 shape = RoundedCornerShape(10.dp),
                 colors = TextFieldDefaults.colors(
                     unfocusedContainerColor = Color.White,
                     focusedContainerColor = Color.White
                 )
             )
+
             OutlinedTextField(
-               value = nameBook,
-               onValueChange = { nameBook = it },
-              placeholder = {Text("Nhập tên sách")},
-               shape = RoundedCornerShape(10.dp),
+                value = nameBook,
+                onValueChange = { nameBook = it },
+                placeholder = { Text("Nhập tên sách") },
+                shape = RoundedCornerShape(10.dp),
                 colors = TextFieldDefaults.colors(
-                unfocusedContainerColor = Color.White,
-                focusedContainerColor = Color.White
+                    unfocusedContainerColor = Color.White,
+                    focusedContainerColor = Color.White
+                )
             )
-           )
-            Box{
-                Row (modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically){
-                    Button(onClick = {expanded = !expanded},
+
+            Box {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Button(
+                        onClick = { expanded = !expanded },
                         modifier = Modifier.padding(10.dp),
                         shape = RoundedCornerShape(10.dp),
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color(0xFFFFFFFF)
-                        )) {
-                        Text(("Chọn thể loại"),fontSize = 16.sp, fontWeight = FontWeight.Bold, color = Color(0xFF3F51B5))
+                        colors = ButtonDefaults.buttonColors(containerColor = Color.White)
+                    ) {
+                        Text("Chọn thể loại", fontSize = 16.sp, fontWeight = FontWeight.Bold, color = Color(0xFF3F51B5))
                     }
-                    Text(("$category"),fontSize = 16.sp, fontWeight = FontWeight.Bold, color = Color(
-                        0xFF000000
-                    )
-                    )
+                    Text(category, fontSize = 16.sp, fontWeight = FontWeight.Bold, color = Color.Black)
                 }
 
                 DropdownMenu(
-                    expanded=expanded,
-                    onDismissRequest = {expanded =false}
-                ){
+                    expanded = expanded,
+                    onDismissRequest = { expanded = false }
+                ) {
                     DropdownMenuItem(
-                        text ={Text("Ngôn tình")},
+                        text = { Text("Ngôn tình") },
                         onClick = {
-                            category= Categorys.romance
+                            category = Categorys.romance
                             expanded = false
                         }
                     )
                     DropdownMenuItem(
-                        text ={Text("Tham khảo")},
+                        text = { Text("Tham khảo") },
                         onClick = {
-                            category= Categorys.reference
+                            category = Categorys.reference
                             expanded = false
                         }
                     )
                 }
             }
 
-
-
-            Button(onClick = {
-
-                var _id = id.toIntOrNull()
-
-                if(nameBook =="" || _id ==null){
-                    messageCreate="Vui lòng nhập đầy đủ thông tin"
-                }
-                else if(category ==""){
-                    messageCreate="Vui lòng chọn thể loại"
-                }
-                else{
-                    if(category == Categorys.reference){
-                        listBook.add(ReferenceBook(_id,nameBook,false))
+            Button(
+                onClick = {
+                    val _id = id.toIntOrNull()
+                    if (nameBook == "" || _id == null) {
+                        messageCreate = "Vui lòng nhập đầy đủ thông tin"
+                    } else if (category == "") {
+                        messageCreate = "Vui lòng chọn thể loại"
+                    } else {
+                        val newBook = when (category) {
+                            Categorys.reference -> ReferenceBook(_id, nameBook, false)
+                            Categorys.romance -> RomanceBook(_id, nameBook, false)
+                            else -> ReferenceBook(_id, nameBook, false)
+                        }
+                        viewModel.addBook(newBook) // Thêm trực tiếp vào viewModel
+                        messageCreate = "Thêm thành công"
+                        id = ""
+                        nameBook = ""
+                        category = ""
                     }
-                    else if(category == Categorys.romance)
-                    {
-                        listBook.add(RomanceBook(_id,nameBook,false))
-                    }
-
-                    messageCreate="Thêm thành công"
-                    id=""
-                    nameBook=""
-                }
-
-            },
-
+                },
                 modifier = Modifier.padding(10.dp),
                 shape = RoundedCornerShape(10.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFF3F51B5)
-                )) {
-
-                Text(text = "Thêm", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White)
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF3F51B5))
+            ) {
+                Text("Thêm", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White)
             }
-            Text((messageCreate))
+
+            Text(messageCreate)
         }
-        LazyColumn(modifier = Modifier.fillMaxWidth().height(250.dp)
-            .padding( start = 30.dp, end = 30.dp)
-            .clip(shape = RoundedCornerShape(10.dp))
-            .background(color = Color(0xFFFFFAD6))
-            .padding(20.dp),
-            verticalArrangement = Arrangement.spacedBy(10.dp)){
 
-
-            items(listBook){
-                    book -> Row(modifier = Modifier.fillMaxWidth().shadow(8.dp).clip(shape = RoundedCornerShape(10.dp)).background(color = Color.White),
-                verticalAlignment = Alignment.CenterVertically){
-                Checkbox(
-                    checked = book.isBorrowed,
-                    onCheckedChange = {
-                       checked ->
-                        val index = listBook.indexOf(book)
-                      if(index != -1){
-                          listBook[index] = ReferenceBook(book.id, book.nameBook, checked)
-                      }
-                    },
-                    colors = CheckboxDefaults.colors(
-                        checkedColor = Color(0xFFC03A3A),
-                        uncheckedColor = Color.Blue,
-                        checkmarkColor = Color.White
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(250.dp)
+                .padding(start = 30.dp, end = 30.dp)
+                .clip(RoundedCornerShape(10.dp))
+                .background(color = Color(0xFFFFFAD6))
+                .padding(20.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
+            items(viewModel.bookList) { book ->
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .shadow(8.dp)
+                        .clip(RoundedCornerShape(10.dp))
+                        .background(Color.White),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Checkbox(
+                        checked = book.isBorrowed,
+                        onCheckedChange = { checked ->
+                            viewModel.updateBookStatus(book.id, checked) // cập nhật trạng thái qua ViewModel
+                        },
+                        colors = CheckboxDefaults.colors(
+                            checkedColor = Color(0xFFC03A3A),
+                            uncheckedColor = Color.Blue,
+                            checkmarkColor = Color.White
+                        )
                     )
-                )
-                Text(text = "${book.nameBook} , thể loại ${book.categoryBook()}")
-
+                    Text("${book.nameBook}, thể loại ${book.categoryBook()}")
+                }
             }
-            }
-
         }
-
-
     }
 }
